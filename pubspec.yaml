@@ -1,4 +1,4 @@
-name: customized_syncfusion_flutter_datagrid
+name: custom_sf_grid_view
 description: Customized library for original package of syncfusion_flutter_datagrid supports filtration color change.
 version: 1.0.0
 
