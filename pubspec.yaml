@@ -1,0 +1,11 @@
+name: customized_syncfusion_flutter_datagrid
+description: Customized library for original package of syncfusion_flutter_datagrid supports filtration color change.
+version: 1.0.0
+
+environment:
+  sdk: '>=3.0.6 <4.0.0'
+
+dependencies:
+  syncfusion_flutter_core: any
+  flutter:
+    sdk: flutter
