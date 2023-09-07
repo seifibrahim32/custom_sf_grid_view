@@ -11,7 +11,7 @@
 /// * [Syncfusion Flutter DataGrid product page](https://www.syncfusion.com/flutter-widgets/flutter-datagrid)
 /// * [User guide documentation](https://help.syncfusion.com/flutter/datagrid/overview)
 /// * [Knowledge base](https://www.syncfusion.com/kb/flutter/sfdatagrid)
-library datagrid;
+library custom_sf_grid_view;
 
 export './src/datagrid_widget/sfdatagrid.dart'
     hide

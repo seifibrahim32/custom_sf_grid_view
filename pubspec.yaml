@@ -6,6 +6,6 @@ environment:
   sdk: '>=3.0.6 <4.0.0'
 
 dependencies:
-  syncfusion_flutter_core: any
   flutter:
     sdk: flutter
+  syncfusion_flutter_core: any
