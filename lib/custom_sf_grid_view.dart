@@ -18,7 +18,6 @@ import 'package:custom_sf_grid_view/src/datagrid_widget/helper/enums.dart';
 import 'package:custom_sf_grid_view/src/datagrid_widget/runtime/column.dart';
 import 'package:custom_sf_grid_view/src/datagrid_widget/sfdatagrid.dart';
 import 'package:flutter/material.dart';
-
 export '../src/datagrid_widget/sfdatagrid.dart'
     hide
         updateSelectedIndex,

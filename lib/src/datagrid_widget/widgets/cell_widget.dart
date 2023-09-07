@@ -510,7 +510,7 @@ class _GridHeaderCellState extends State<GridHeaderCell> {
               dataGridConfiguration.allowSorting) {
             const IconData unsortIconData = IconData(0xe700,
                 fontFamily: 'UnsortIcon',
-                fontPackage: 'syncfusion_flutter_datagrid');
+                fontPackage: 'custom_sf_grid_view');
 
             children.add(_sortIcon ??
                 Icon(unsortIconData, color: _sortIconColor, size: 16));
@@ -1072,7 +1072,7 @@ class _UnfilteredIcon extends StatelessWidget {
         Icon(
           const IconData(0xe702,
               fontFamily: 'FilterIcon',
-              fontPackage: 'syncfusion_flutter_datagrid'),
+              fontPackage: 'custom_sf_grid_view'),
           size: 18.0,
           color: iconColor,
           key: ValueKey<String>(
@@ -1099,7 +1099,7 @@ class _FilteredIcon extends StatelessWidget {
         Icon(
           const IconData(0xe704,
               fontFamily: 'FilterIcon',
-              fontPackage: 'syncfusion_flutter_datagrid'),
+              fontPackage: 'custom_sf_grid_view'),
           size: 18.0,
           color: iconColor,
           key: ValueKey<String>(
@@ -1321,7 +1321,7 @@ class _FilterPopupState extends State<_FilterPopup> {
                     prefix: Icon(
                       const IconData(0xe700,
                           fontFamily: 'FilterIcon',
-                          fontPackage: 'syncfusion_flutter_datagrid'),
+                          fontPackage: 'custom_sf_grid_view'),
                       color: isSortAscendingEnabled
                           ? iconColor
                           : filterHelper.disableIconColor,
@@ -1349,7 +1349,7 @@ class _FilterPopupState extends State<_FilterPopup> {
                   prefix: Icon(
                     const IconData(0xe701,
                         fontFamily: 'FilterIcon',
-                        fontPackage: 'syncfusion_flutter_datagrid'),
+                        fontPackage: 'custom_sf_grid_view'),
                     color: isSortDescendingEnabled
                         ? iconColor
                         : filterHelper.disableIconColor,
@@ -1384,7 +1384,7 @@ class _FilterPopupState extends State<_FilterPopup> {
                   prefix: Icon(
                       const IconData(0xe703,
                           fontFamily: 'FilterIcon',
-                          fontPackage: 'syncfusion_flutter_datagrid'),
+                          fontPackage: 'custom_sf_grid_view'),
                       size: filterHelper.textStyle.fontSize! + 8,
                       color: isClearFilterEnabled
                           ? iconColor
@@ -1415,10 +1415,10 @@ class _FilterPopupState extends State<_FilterPopup> {
                               FilteredFrom.advancedFilter
                           ? const IconData(0xe704,
                               fontFamily: 'FilterIcon',
-                              fontPackage: 'syncfusion_flutter_datagrid')
+                              fontPackage: 'custom_sf_grid_view')
                           : const IconData(0xe702,
                               fontFamily: 'FilterIcon',
-                              fontPackage: 'syncfusion_flutter_datagrid'),
+                              fontPackage: 'custom_sf_grid_view'),
                       size: filterHelper.textStyle.fontSize! + 6,
                       color: iconColor),
                   suffix: Icon(
@@ -2315,7 +2315,7 @@ class _AdvancedFilterPopupMenu extends StatelessWidget {
 
     if (filterHelper.advancedFilterType == AdvancedFilterType.text) {
       const IconData caseSensitiveIcon = IconData(0xe705,
-          fontFamily: 'FilterIcon', fontPackage: 'syncfusion_flutter_datagrid');
+          fontFamily: 'FilterIcon', fontPackage: 'custom_sf_grid_view');
       return IconButton(
           key: isFirstButton
               ? const ValueKey<String>(
