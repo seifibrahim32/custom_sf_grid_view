@@ -1,9 +1,9 @@
 
 import 'package:flutter/material.dart' hide DataCell, DataRow;
-import '../../datagrid_widget/collections/collections.dart';
-import '../../datagrid_widget/runtime/column.dart';
-import '../../datagrid_widget/selection/selection_manager.dart';
-import '../../datagrid_widget/sfdatagrid.dart';
+import '../collections/collections.dart';
+import '../runtime/column.dart';
+import '../selection/selection_manager.dart';
+import '../sfdatagrid.dart';
 import '../../grid_common/row_column_index.dart';
 import '../../grid_common/scroll_axis.dart';
 import '../../grid_common/visible_line_info.dart';

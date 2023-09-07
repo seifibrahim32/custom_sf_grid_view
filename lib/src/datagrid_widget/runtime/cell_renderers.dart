@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart' hide DataCell, DataRow;
-import '../../datagrid_widget/helper/datagrid_configuration.dart';
-import '../../datagrid_widget/helper/enums.dart';
-import '../../datagrid_widget/sfdatagrid.dart';
-import '../../datagrid_widget/widgets/cell_widget.dart';
+import '../helper/datagrid_configuration.dart';
+import '../helper/enums.dart';
+import '../sfdatagrid.dart';
+import '../widgets/cell_widget.dart';
 import '../../grid_common/row_column_index.dart';
 
-import '../../datagrid_widget/helper/datagrid_helper.dart' as grid_helper;
-import '../../datagrid_widget/selection/selection_manager.dart' as selection_manager;
+import '../helper/datagrid_helper.dart' as grid_helper;
+import '../selection/selection_manager.dart' as selection_manager;
 import 'generator.dart';
 
 /// The base class for the cell renderer that used to display the widget.

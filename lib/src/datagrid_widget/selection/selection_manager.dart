@@ -1,15 +1,15 @@
 
 import 'package:flutter/material.dart' hide DataCell, DataRow;
 import 'package:flutter/services.dart';
-import '../../datagrid_widget/collections/collections.dart';
+import '../collections/collections.dart';
 
 import '../../grid_common/row_column_index.dart';
-import '../../datagrid_widget/helper/datagrid_configuration.dart';
-import '../../datagrid_widget/helper/datagrid_helper.dart' as grid_helper;
-import '../../datagrid_widget/helper/enums.dart';
-import '../../datagrid_widget/helper/selection_helper.dart' as selection_helper;
-import '../../datagrid_widget/runtime/generator.dart';
-import '../../datagrid_widget/sfdatagrid.dart';
+import '../helper/datagrid_configuration.dart';
+import '../helper/datagrid_helper.dart' as grid_helper;
+import '../helper/enums.dart';
+import '../helper/selection_helper.dart' as selection_helper;
+import '../runtime/generator.dart';
+import '../sfdatagrid.dart';
 
 /// Provides the base functionalities to process the selection in [SfDataGrid].
 class SelectionManagerBase extends ChangeNotifier {

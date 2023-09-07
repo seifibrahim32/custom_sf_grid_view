@@ -3,11 +3,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import '../../src/datagrid_widget/collections/collections.dart';
-import '../../src/localizations/global_localizations.dart';
+import '../datagrid_widget/collections/collections.dart';
+import '../localizations/global_localizations.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 
-import '../../src/datagrid_widget/sfdatagrid.dart';
+import '../datagrid_widget/sfdatagrid.dart';
 
 /// Signature for the [SfDataPager.pageItemBuilder] callback.
 typedef DataPagerItemBuilderCallback<Widget> = Widget? Function(String text);

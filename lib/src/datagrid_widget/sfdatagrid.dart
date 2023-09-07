@@ -1,15 +1,13 @@
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import '../../src/datagrid_widget'
-    '/collections/collections.dart';
-import '../../src/datagrid_widget/helper/callbackargs.dart';
-import '../../src/datagrid_widget/helper/enums.dart';
-import '../../src/grid_common/line_size_host.dart';
-import '../../src/grid_common/row_column_index.dart';
-import '../../src/grid_common/scroll_axis.dart';
-import '../../src/localizations'
-    '/global_localizations.dart';
+import 'collections/collections.dart';
+import 'helper/callbackargs.dart';
+import 'helper/enums.dart';
+import '../grid_common/line_size_host.dart';
+import '../grid_common/row_column_index.dart';
+import '../grid_common/scroll_axis.dart';
+import '../localizations/global_localizations.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 
 import 'helper/datagrid_configuration.dart';

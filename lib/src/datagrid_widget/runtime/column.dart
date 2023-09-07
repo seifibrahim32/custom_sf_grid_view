@@ -4,19 +4,16 @@ import 'dart:math';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import '../../datagrid_widget'
-    '/collections/collections.dart';
-import '../../datagrid_widget/helper/callbackargs.dart';
-import '../../datagrid_widget/helper/datagrid_configuration.dart';
-import '../../datagrid_widget/helper/enums.dart';
-import '../../datagrid_widget/sfdatagrid.dart';
+import '../collections/collections.dart';
+import '../helper/callbackargs.dart';
+import '../helper/datagrid_configuration.dart';
+import '../helper/enums.dart';
+import '../sfdatagrid.dart';
 import '../../grid_common/enums.dart';
 import '../../grid_common/line_size_host.dart';
 import '../../grid_common/visible_line_info.dart';
-import '../../localizations'
-    '/global_localizations.dart';
-import '../../datagrid_widget'
-    '/helper/datagrid_helper.dart' as grid_helper;
+import '../../localizations/global_localizations.dart';
+import '../helper/datagrid_helper.dart' as grid_helper;
 import 'generator.dart';
 
 /// Provides the base functionalities for all the column types in [SfDataGrid].

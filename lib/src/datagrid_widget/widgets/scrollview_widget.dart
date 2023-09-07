@@ -3,21 +3,21 @@ import 'dart:math';
 import 'package:flutter/material.dart' hide DataCell, DataRow;
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import '../../datagrid_widget/collections/collections.dart';
+import '../collections/collections.dart';
 
 import '../../grid_common/line_size_host.dart';
 import '../../grid_common/scroll_axis.dart';
 
-import '../../datagrid_widget/helper/datagrid_configuration.dart';
+import '../helper/datagrid_configuration.dart';
 import '../../grid_common/scrollbar.dart';
 import '../../grid_common/visible_line_info.dart';
-import '../../datagrid_widget/helper/datagrid_helper.dart' as grid_helper;
-import '../../datagrid_widget/helper/enums.dart';
-import '../../datagrid_widget/helper/selection_helper.dart' as selection_helper;
-import '../../datagrid_widget/runtime/column.dart';
-import '../../datagrid_widget/runtime/generator.dart';
-import '../../datagrid_widget/selection/selection_manager.dart';
-import '../../datagrid_widget/sfdatagrid.dart';
+import '../helper/datagrid_helper.dart' as grid_helper;
+import '../helper/enums.dart';
+import '../helper/selection_helper.dart' as selection_helper;
+import '../runtime/column.dart';
+import '../runtime/generator.dart';
+import '../selection/selection_manager.dart';
+import '../sfdatagrid.dart';
 import 'rendering_widget.dart';
 
 /// A [StatefulWidget] that build all the data grid views from the widget level.
