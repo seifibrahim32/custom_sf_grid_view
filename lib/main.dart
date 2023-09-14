@@ -1,9 +1,11 @@
-
 import 'package:custom_sf_grid_view/models/employee_model.dart';
+import 'package:custom_sf_grid_view/src/datagrid_widget/runtime/column.dart';
 import 'package:custom_sf_grid_view/viewmodel/datasources/employee_local_source.dart';
 import 'package:flutter/material.dart';
 
 import 'package:custom_sf_grid_view/custom_sf_grid_view.dart';
+
+import 'custom_sf_grid_view.dart';
 
 void main() async {
   runApp(const MaterialApp(
@@ -86,6 +88,53 @@ class _GridExampleState extends State<GridExample> {
           child: CustomizedGridView(
             shrinkWrapRows: true,
             source: employeeDataSource,
+            onClickFilter: (GridColumn gridColumn,
+                DataGridFilterHelper filterHelper) async {
+              List<FilterElement> filteredItems = filterHelper
+                  .checkboxFilterHelper.filterCheckboxItems
+                  .where((element) => element.isSelected)
+                  .toList();
+
+              AlertDialog alert = AlertDialog(
+                elevation: 3,
+                title: Text(gridColumn.columnName),
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text("The filtered items is/are:\n"),
+                    SizedBox(
+                      height: 20,
+                      width: 200,
+                      child: ListView.separated(
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: false,
+                        itemBuilder: (context, index) {
+                          return Text(filteredItems[index].value.toString());
+                        },
+                        itemCount: filteredItems.length,
+                        separatorBuilder: (context, index) {
+                          return SizedBox(height: 2);
+                        },
+                      ),
+                    )
+                  ],
+                ),
+                actions: [
+                  TextButton(
+                    child: const Text("HIDE"),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  )
+                ],
+              );
+              await showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return alert;
+                },
+              );
+            },
             allowFiltering: true,
             columns: [
               GridColumn(

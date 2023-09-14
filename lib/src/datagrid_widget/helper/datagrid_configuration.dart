@@ -408,5 +408,5 @@ class DataGridConfiguration {
   late MaterialColor okButtonColor = Colors.blue;
 
   /// While clicking on OK Button
-  Future Function(GridColumn gridColumn)? okFilterActionButton;
+  Future Function(GridColumn gridColumn,DataGridFilterHelper filterHelper)? okFilterActionButton;
 }

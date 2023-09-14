@@ -71,7 +71,7 @@ export '../src/datagrid_widget/widgets/cell_widget.dart'
     show GridHeaderCellElement;
 
 class CustomizedGridView extends SfDataGrid {
-  final Future Function(GridColumn gridColumn)? onClickFilter;
+  final Future Function(GridColumn gridColumn,DataGridFilterHelper filterHelper)? onClickFilter;
 
   CustomizedGridView({
     required super.source,

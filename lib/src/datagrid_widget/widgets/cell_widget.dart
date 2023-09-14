@@ -1572,8 +1572,9 @@ class _FilterPopupState extends State<_FilterPopup> {
     }
     else {
       await widget.dataGridConfiguration
-          .okFilterActionButton?.call(widget.column).then((_){
-    filterHelper.createFilterConditions(!isAdvancedFilter, widget.column);
+          .okFilterActionButton?.call(widget.column,filterHelper).then((_){
+            filterHelper
+                .createFilterConditions(!isAdvancedFilter, widget.column);
     }).whenComplete(() => closePage());
     }
   }
