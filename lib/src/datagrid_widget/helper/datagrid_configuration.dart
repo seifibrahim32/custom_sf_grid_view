@@ -405,7 +405,7 @@ class DataGridConfiguration {
   late ColumnDragAndDropController columnDragAndDropController;
 
   /// Color configuration for OK Button color
-  late MaterialColor okButtonColor;
+  late MaterialColor okButtonColor = Colors.blue;
 
   /// While clicking on OK Button
   Future Function(GridColumn gridColumn)? okFilterActionButton;

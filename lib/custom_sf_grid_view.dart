@@ -71,11 +71,9 @@ export '../src/datagrid_widget/widgets/cell_widget.dart'
     show GridHeaderCellElement;
 
 class CustomizedGridView extends SfDataGrid {
-  final MaterialColor okButtonColor;
   final Future Function(GridColumn gridColumn)? onClickFilter;
 
-  CustomizedGridView(
-    this.okButtonColor, {
+  CustomizedGridView({
     required super.source,
     required super.columns,
     super.key,
@@ -159,7 +157,6 @@ class CustomizedGridView extends SfDataGrid {
         assert(frozenRowsCount >= 0),
         assert(footerFrozenRowsCount >= 0),
         super(dataGridConfiguration: DataGridConfiguration()) {
-    super.dataGridConfiguration.okButtonColor = okButtonColor;
     super.dataGridConfiguration.okFilterActionButton = onClickFilter;
   }
 }

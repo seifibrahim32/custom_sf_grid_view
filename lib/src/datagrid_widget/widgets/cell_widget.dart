@@ -1568,6 +1568,7 @@ class _FilterPopupState extends State<_FilterPopup> {
   void onHandleOkButtonTap() async {
     if(widget.dataGridConfiguration.okFilterActionButton == null){
       filterHelper.createFilterConditions(!isAdvancedFilter, widget.column);
+      closePage();
     }
     else {
       await widget.dataGridConfiguration
