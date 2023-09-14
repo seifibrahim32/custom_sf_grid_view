@@ -1,5 +1,4 @@
 
-import 'package:custom_sf_grid_view/src/datagrid_widget/runtime/column.dart';
 import 'package:flutter/material.dart';
 
 import 'package:custom_sf_grid_view/custom_sf_grid_view.dart';
