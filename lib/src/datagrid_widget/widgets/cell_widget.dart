@@ -1188,6 +1188,11 @@ class _FilterPopupState extends State<_FilterPopup> {
     filterHelper.isFilterPopupMenuShowing = true;
   }
 
+  void popUpMenu() {
+    widget.isColumnFiltering(false);
+    closePage();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Visibility(
@@ -1531,7 +1536,7 @@ class _FilterPopupState extends State<_FilterPopup> {
                         width: 120.0,
                         height: filterHelper.tileHeight - 8,
                         child: OutlinedButton(
-                            onPressed: closePage,
+                            onPressed: popUpMenu,
                             child: Text(
                               localizations.cancelDataGridFilteringLabel,
                               style: TextStyle(
