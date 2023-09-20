@@ -1536,7 +1536,7 @@ class _FilterPopupState extends State<_FilterPopup> {
                         width: 120.0,
                         height: filterHelper.tileHeight - 8,
                         child: OutlinedButton(
-                            onPressed: popUpMenu,
+                            onPressed: popUpMenu(),
                             child: Text(
                               localizations.cancelDataGridFilteringLabel,
                               style: TextStyle(
@@ -1983,7 +1983,6 @@ class _CheckboxFilterMenu extends StatelessWidget {
 
     for (final FilterElement item in filterHelper.filterCheckboxItems) {
       item.isSelected = !useSelected;
-      print("${item.value} ${item.isSelected}");
     }
     filterHelper.ensureSelectAllCheckboxState();
     setState(() {});
