@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:custom_sf_grid_view/custom_sf_grid_view.dart';
+
 class EmployeeDataSource extends DataGridSource {
   /// Creates the employee data source class with required details.
   EmployeeDataSource({required List<EmployeeModel> employeeData}) {
@@ -53,6 +54,7 @@ class EmployeeModel {
   /// Salary of an employee.
   final int salary;
 }
+
 void main() async {
   runApp(const MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -135,7 +137,7 @@ class _GridExampleState extends State<GridExample> {
             shrinkWrapRows: true,
             source: employeeDataSource,
             onClickFilter: (GridColumn gridColumn,
-                DataGridFilterHelper filterHelper) async {
+                DataGridFilterHelper filterHelper,bool isClearFilter) async {
               List<FilterElement> filteredItems = filterHelper
                   .checkboxFilterHelper.filterCheckboxItems
                   .where((element) => element.isSelected)

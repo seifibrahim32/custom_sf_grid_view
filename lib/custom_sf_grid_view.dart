@@ -21,25 +21,25 @@ import 'package:custom_sf_grid_view/src/datagrid_widget/sfdatagrid.dart';
 import 'package:flutter/material.dart';
 export '../src/datagrid_widget/sfdatagrid.dart'
     hide
-        updateSelectedIndex,
-        updateSelectedRow,
-        updateVerticalOffset,
-        updateHorizontalOffset,
-        notifyDataGridPropertyChangeListeners,
-        handleLoadMoreRows,
-        handleRefresh,
-        updateDataSource,
-        effectiveRows,
-        setPageCount,
-        setChildColumnIndexes,
-        getChildColumnIndexes,
-        addFilterConditions,
-        removeFilterConditions,
-        refreshEffectiveRows,
-        performSorting,
-        updateDataPager,
-        getRowsPerPage,
-        DataGridThemeHelper;
+    updateSelectedIndex,
+    updateSelectedRow,
+    updateVerticalOffset,
+    updateHorizontalOffset,
+    notifyDataGridPropertyChangeListeners,
+    handleLoadMoreRows,
+    handleRefresh,
+    updateDataSource,
+    effectiveRows,
+    setPageCount,
+    setChildColumnIndexes,
+    getChildColumnIndexes,
+    addFilterConditions,
+    removeFilterConditions,
+    refreshEffectiveRows,
+    performSorting,
+    updateDataPager,
+    getRowsPerPage,
+    DataGridThemeHelper;
 export '../src/localizations/global_localizations.dart';
 export '../src/datapager/sfdatapager.dart'
     hide SfDataPagerState, DataPagerThemeHelper;
@@ -50,29 +50,30 @@ export '../src/datagrid_widget/helper/enums.dart'
     hide FilteredFrom, AdvancedFilterType;
 export '../src/datagrid_widget/runtime/column.dart'
     hide
-        ColumnResizeController,
-        refreshColumnSizer,
-        initialRefresh,
-        resetAutoCalculation,
-        updateColumnSizerLoadedInitiallyFlag,
-        getSortIconWidth,
-        getFilterIconWidth,
-        getAutoFitRowHeight,
-        setStateDetailsInColumnSizer,
-        isColumnSizerLoadedInitially,
-        FilterElement,
-        GridCheckboxColumn,
-        DataGridFilterHelper,
-        DataGridCheckboxFilterHelper,
-        DataGridAdvancedFilterHelper,
-        ColumnDragAndDropController;
+    ColumnResizeController,
+    refreshColumnSizer,
+    initialRefresh,
+    resetAutoCalculation,
+    updateColumnSizerLoadedInitiallyFlag,
+    getSortIconWidth,
+    getFilterIconWidth,
+    getAutoFitRowHeight,
+    setStateDetailsInColumnSizer,
+    isColumnSizerLoadedInitially,
+    FilterElement,
+    GridCheckboxColumn,
+    DataGridFilterHelper,
+    DataGridCheckboxFilterHelper,
+    DataGridAdvancedFilterHelper,
+    ColumnDragAndDropController;
 export '../src/datagrid_widget/selection/selection_manager.dart'
     show RowSelectionManager, SelectionManagerBase;
 export '../src/datagrid_widget/widgets/cell_widget.dart'
     show GridHeaderCellElement;
 
 class CustomizedGridView extends SfDataGrid {
-  final Future Function(GridColumn gridColumn,DataGridFilterHelper filterHelper)? onClickFilter;
+  final Future Function(GridColumn gridColumn, DataGridFilterHelper
+        filterHelper, bool isClearFilter)? onClickFilter;
 
   CustomizedGridView({
     required super.source,
@@ -153,11 +154,12 @@ class CustomizedGridView extends SfDataGrid {
     super.allowColumnsDragging = false,
     super.onColumnDragging,
     super.columnDragFeedbackBuilder,
-  })  : assert(frozenColumnsCount >= 0),
+  })
+      : assert(frozenColumnsCount >= 0),
         assert(footerFrozenColumnsCount >= 0),
         assert(frozenRowsCount >= 0),
         assert(footerFrozenRowsCount >= 0),
         super(dataGridConfiguration: DataGridConfiguration()) {
-    super.dataGridConfiguration.okFilterActionButton = onClickFilter;
+    super.dataGridConfiguration.filterActionButton = onClickFilter;
   }
 }
