@@ -1021,8 +1021,7 @@ class _FilterIconState extends State<_FilterIcon> {
   Widget build(BuildContext context) {
     bool isHovered = false;
     isFiltered = widget.dataGridConfiguration.source.filterConditions
-        .containsKey(widget.column.columnName) ||
-        isFiltering;
+        .containsKey(widget.column.columnName) || isFiltering;
     return GestureDetector(
       onTapUp: (TapUpDetails details) => onHandleTap(details, context),
       child: Padding(
@@ -1189,7 +1188,10 @@ class _FilterPopupState extends State<_FilterPopup> {
   }
 
   popUpMenu() {
-    widget.isColumnFiltering(false);
+    if(!widget.dataGridConfiguration.source.filterConditions
+        .containsKey(widget.column.columnName)){
+      widget.isColumnFiltering(false);
+    }
     closePage();
   }
 
@@ -1590,15 +1592,15 @@ class _FilterPopupState extends State<_FilterPopup> {
   }
 
   void onHandleClearFilterTap() async {
-    if (widget.dataGridConfiguration.filterActionButton == null) {
+    if (widget.dataGridConfiguration.onClearFilter == null) {
       filterHelper.onClearFilterButtonClick(widget.column);
 
       widget.isColumnFiltering(false);
       closePage();
     } else {
       widget.isColumnFiltering(false);
-      await widget.dataGridConfiguration.filterActionButton
-          ?.call(widget.column, filterHelper, true)
+      await widget.dataGridConfiguration.onClearFilter
+          ?.call(widget.column, filterHelper)
           .whenComplete(() => closePage());
     }
   }
@@ -1616,7 +1618,7 @@ class _FilterPopupState extends State<_FilterPopup> {
       closePage();
     } else {
       await widget.dataGridConfiguration.filterActionButton
-          ?.call(widget.column, filterHelper, false)
+          ?.call(widget.column, filterHelper)
           .whenComplete(() => closePage());
     }
   }
@@ -1626,11 +1628,17 @@ class _FilterPopupState extends State<_FilterPopup> {
   }
 
   bool hasFilterConditions() {
-    return (widget.dataGridConfiguration.source.filterConditions
-        .containsKey(widget.column.columnName)) ||
-        (filterHelper.checkboxFilterHelper.isSelectAllChecked != null &&
-            filterHelper.checkboxFilterHelper.isSelectAllChecked!) ||
-        (filterHelper.checkboxFilterHelper.isSelectAllInTriState);
+    if(widget.dataGridConfiguration.onClearFilter != null){
+      return (widget.dataGridConfiguration.source.filterConditions
+          .containsKey(widget.column.columnName)) ||
+          (filterHelper.checkboxFilterHelper.isSelectAllChecked != null &&
+              filterHelper.checkboxFilterHelper.isSelectAllChecked!) ||
+          (filterHelper.checkboxFilterHelper.isSelectAllInTriState);
+    }
+    else {
+      return (widget.dataGridConfiguration.source.filterConditions
+          .containsKey(widget.column.columnName));
+    }
   }
 
   bool canDisableOkButton() {

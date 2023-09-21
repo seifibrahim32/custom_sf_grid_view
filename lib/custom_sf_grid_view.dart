@@ -72,14 +72,20 @@ export '../src/datagrid_widget/widgets/cell_widget.dart'
     show GridHeaderCellElement;
 
 class CustomizedGridView extends SfDataGrid {
-  final Future Function(GridColumn gridColumn, DataGridFilterHelper
-        filterHelper, bool isClearFilter)? onClickFilter;
+  final Future Function(
+      GridColumn gridColumn,
+      DataGridFilterHelper filterHelper)? onClickFilter;
+
+  final Future Function(
+      GridColumn gridColumn,
+      DataGridFilterHelper filterHelper)? onClearFilter;
 
   CustomizedGridView({
     required super.source,
     required super.columns,
     super.key,
     this.onClickFilter,
+    this.onClearFilter,
     required super.shrinkWrapRows,
     required super.allowFiltering,
     super.rowHeight = double.nan,
@@ -154,12 +160,12 @@ class CustomizedGridView extends SfDataGrid {
     super.allowColumnsDragging = false,
     super.onColumnDragging,
     super.columnDragFeedbackBuilder,
-  })
-      : assert(frozenColumnsCount >= 0),
+  })  : assert(frozenColumnsCount >= 0),
         assert(footerFrozenColumnsCount >= 0),
         assert(frozenRowsCount >= 0),
         assert(footerFrozenRowsCount >= 0),
         super(dataGridConfiguration: DataGridConfiguration()) {
     super.dataGridConfiguration.filterActionButton = onClickFilter;
+    super.dataGridConfiguration.onClearFilter = onClearFilter;
   }
 }

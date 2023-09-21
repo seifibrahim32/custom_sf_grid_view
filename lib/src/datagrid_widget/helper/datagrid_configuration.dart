@@ -407,7 +407,12 @@ class DataGridConfiguration {
   /// Color configuration for OK Button color
   late MaterialColor okButtonColor = Colors.blue;
 
-  /// While clicking on OK Button
-  Future Function(GridColumn gridColumn,DataGridFilterHelper filterHelper,
-      bool isClearFilter)? filterActionButton;
+  /// While clicking on OK Button for filtration
+  Future Function(GridColumn gridColumn,
+      DataGridFilterHelper filterHelper)? filterActionButton;
+
+
+  /// While clearing filtration
+  Future Function(GridColumn gridColumn,
+      DataGridFilterHelper filterHelper)? onClearFilter;
 }

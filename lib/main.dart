@@ -74,6 +74,7 @@ class GridExample extends StatefulWidget {
   State<GridExample> createState() => _GridExampleState();
 }
 
+
 class _GridExampleState extends State<GridExample> {
   late EmployeeDataSource employeeDataSource;
 
@@ -114,7 +115,7 @@ class _GridExampleState extends State<GridExample> {
       EmployeeModel(10006, 'Newberry', 'Developer', 15000),
       EmployeeModel(10008, 'Perry', 'Developer', 15000),
       EmployeeModel(10009, 'Gable', 'Developer', 15000),
-      EmployeeModel(10010, 'Grimes', 'Developer', 15000)
+      EmployeeModel(10010, 'Grimes', 'Developer', 0)
     ];
   }
 
@@ -129,100 +130,148 @@ class _GridExampleState extends State<GridExample> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Expanded(
-          child: CustomizedGridView(
-            shrinkWrapRows: true,
-            source: employeeDataSource,
-            onClickFilter: (GridColumn gridColumn,
-                DataGridFilterHelper filterHelper,bool isClearFilter) async {
-              List<FilterElement> filteredItems = filterHelper
-                  .checkboxFilterHelper.filterCheckboxItems
-                  .where((element) => element.isSelected)
-                  .toList();
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(
+              child: CustomizedGridView(
+                shrinkWrapRows: true,
+                allowColumnsResizing: true,
+                // onClickFilter: (GridColumn gridColumn,
+                //     DataGridFilterHelper filterHelper) async {
+                //   List<FilterElement> filteredItems = filterHelper
+                //       .checkboxFilterHelper.filterCheckboxItems
+                //       .where((element) => element.isSelected)
+                //       .toList();
+                //
+                //   AlertDialog alert = AlertDialog(
+                //     elevation: 3,
+                //     title: Text(gridColumn.columnName),
+                //     content: Column(
+                //       mainAxisSize: MainAxisSize.min,
+                //       children: [
+                //         const Text("The filtered item(s) is/are:\n"),
+                //         SizedBox(
+                //             height: 160,
+                //             width: 200,
+                //             child: ListView.separated(
+                //               physics: const NeverScrollableScrollPhysics(),
+                //               shrinkWrap: false,
+                //               itemBuilder: (context, index) {
+                //                 return Text(filteredItems[index].value.toString());
+                //               },
+                //               itemCount: filteredItems.length,
+                //               separatorBuilder: (context, index) {
+                //                 return const SizedBox(height: 2);
+                //               },
+                //             ),
+                //           )
+                //       ],
+                //     ),
+                //     actions: [
+                //       TextButton(
+                //         child: const Text("HIDE"),
+                //         onPressed: () {
+                //           Navigator.pop(context);
+                //         },
+                //       )
+                //     ],
+                //   );
+                //   await showDialog(
+                //     context: context,
+                //     builder: (BuildContext context) {
+                //       return alert;
+                //     },
+                //   );
+                // },
+                onClearFilter: (GridColumn gridColumn,
+                    DataGridFilterHelper filterHelper) async {
+                  List<FilterElement> filteredItems = filterHelper
+                      .checkboxFilterHelper.filterCheckboxItems
+                      .where((element) => !element.isSelected)
+                      .toList();
 
-              AlertDialog alert = AlertDialog(
-                elevation: 3,
-                title: Text(gridColumn.columnName),
-                content: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text("The filtered items is/are:\n"),
-                    SizedBox(
-                      height: 20,
-                      width: 200,
-                      child: ListView.separated(
-                        physics: NeverScrollableScrollPhysics(),
-                        shrinkWrap: false,
-                        itemBuilder: (context, index) {
-                          return Text(filteredItems[index].value.toString());
+                  AlertDialog alert = AlertDialog(
+                    elevation: 3,
+                    title: Text(gridColumn.columnName),
+                    content: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const Text("The items are returned to its default.\n"),
+                        SizedBox(
+                          height: 160,
+                          width: 200,
+                          child: ListView.separated(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: false,
+                            itemBuilder: (context, index) {
+                              return Text(filteredItems[index].value.toString());
+                            },
+                            itemCount: filteredItems.length,
+                            separatorBuilder: (context, index) {
+                              return const SizedBox(height: 2);
+                            },
+                          ),
+                        )
+                      ],
+                    ),
+                    actions: [
+                      TextButton(
+                        child: const Text("HIDE"),
+                        onPressed: () {
+                          Navigator.pop(context);
                         },
-                        itemCount: filteredItems.length,
-                        separatorBuilder: (context, index) {
-                          return SizedBox(height: 2);
-                        },
-                      ),
-                    )
-                  ],
-                ),
-                actions: [
-                  TextButton(
-                    child: const Text("HIDE"),
-                    onPressed: () {
-                      Navigator.pop(context);
+                      )
+                    ],
+                  );
+                  await showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return alert;
                     },
-                  )
-                ],
-              );
-              await showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return alert;
+                  );
                 },
-              );
-            },
-            allowFiltering: true,
-            columns: [
-              GridColumn(
-                  columnName: 'id',
-                  filterIconPosition: ColumnHeaderIconPosition.end,
-                  filterPopupMenuOptions: const FilterPopupMenuOptions(
-                    canShowClearFilterOption: true,
-                    canShowSortingOptions: true,
-                    filterMode: FilterMode.advancedFilter,
-                    showColumnName: true,
-                  ),
-                  label: Container(
-                      alignment: Alignment.centerRight,
-                      padding: const EdgeInsets.all(8.0),
-                      child: const Text(
-                        'ID',
-                      ))),
-              GridColumn(
-                  columnName: 'name',
-                  label: Container(
-                      padding: const EdgeInsets.all(16.0),
-                      alignment: Alignment.centerLeft,
-                      child: const Text('Name'))),
-              GridColumn(
-                  columnName: 'designation',
-                  width: 120,
-                  label: Container(
-                      padding: const EdgeInsets.all(16.0),
-                      alignment: Alignment.centerLeft,
-                      child: const Text('Designation'))),
-              GridColumn(
-                  columnName: 'salary',
-                  label: Container(
-                      padding: const EdgeInsets.all(16.0),
-                      alignment: Alignment.centerRight,
-                      child: const Text('Salary'))),
-            ],
-          ),
-        ),
-      ],
-    ));
+                source: employeeDataSource,
+                allowFiltering: true,
+                columns: [
+                  GridColumn(
+                      columnName: 'id',
+                      filterIconPosition: ColumnHeaderIconPosition.end,
+                      filterPopupMenuOptions: const FilterPopupMenuOptions(
+                        canShowClearFilterOption: true,
+                        canShowSortingOptions: true,
+                        filterMode: FilterMode.advancedFilter,
+                        showColumnName: true,
+                      ),
+                      label: Container(
+                          alignment: Alignment.centerRight,
+                          padding: const EdgeInsets.all(8.0),
+                          child: const Text(
+                            'ID',
+                          ))),
+                  GridColumn(
+                      columnName: 'name',
+                      label: Container(
+                          padding: const EdgeInsets.all(16.0),
+                          alignment: Alignment.centerLeft,
+                          child: const Text('Name'))),
+                  GridColumn(
+                      columnName: 'designation',
+                      width: 120,
+                      label: Container(
+                          padding: const EdgeInsets.all(16.0),
+                          alignment: Alignment.centerLeft,
+                          child: const Text('Designation'))),
+                  GridColumn(
+                      columnName: 'salary',
+                      label: Container(
+                          padding: const EdgeInsets.all(16.0),
+                          alignment: Alignment.centerRight,
+                          child: const Text('Salary'))),
+                ],
+              ),
+            ),
+          ],
+        ));
   }
 }
