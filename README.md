@@ -1,4 +1,4 @@
-## Custim SF DataGridView
+## Custom SF DataGridView
 
 ## Features
 
